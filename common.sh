@@ -34,6 +34,16 @@ VALIDATE(){
     fi
 
 }
+nodejs_setup(){
+    dnf module disable nodejs -y &>>$LOGS_FILE
+VALIDATE $? "disabling nodejs module"
+
+dnf module enable nodejs:20 -y &>>$LOGS_FILE
+VALIDATE $? "enabling nodejs 20 module"
+
+dnf install nodejs -y &>>$LOGS_FILE
+VALIDATE $? "installing nodejs"
+}
 
 print_total_time(){
     END_TIME=$(date +%s)
