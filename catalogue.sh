@@ -23,7 +23,7 @@ if [ $Index -le 0 ]; then
     mongosh --host $MONGODB_HOST </app/db/master-data.js &>>$LOGS_FILE
     VALIDATE $? "loading products data to catalogue database"
 else
-    echo -e "$Y $(date "+%y-%m-%d %H:%M:%S")| Products already loaded in catalogue database $Y SKIPPING $N" | tee -a $LOGS_FILE
+    echo -e "$Y $(date "+%y-%m-%d %H:%M:%S")| Products already loaded in catalogue database $Y SKIPPING $N" &>>$LOGS_FILE
 fi
 
 app_restart
